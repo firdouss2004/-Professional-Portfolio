@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Taskeen Firdous – Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #ffffff;
+    --off-white: #f8f8f6;
+    --ink: #1a1a1a;
+    --ink-light: #595959;
+    --rule: #e4e4e0;
+    --accent: #2E5266;
+    --accent-light: #e8eff3;
+    --tag-bg: #f0f4f7;
+    --mono: 'JetBrains Mono', monospace;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 56px;
+  }
+  .nav-logo {
+    font-family: var(--mono); font-size: 13px; font-weight: 500;
+    color: var(--accent); letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: var(--ink-light);
+    text-decoration: none; letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* SECTIONS */
+  section { padding: 100px 0; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+  /* HERO */
+  #hero {
+    padding-top: 140px; padding-bottom: 100px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 12px; font-weight: 500;
+    color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-name {
+    font-family: var(--serif); font-size: clamp(48px, 8vw, 80px);
+    line-height: 1.05; color: var(--ink); margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .hero-title {
+    font-size: 16px; color: var(--ink-light); margin-bottom: 32px;
+    max-width: 520px; line-height: 1.7;
+  }
+  .hero-title strong { color: var(--ink); font-weight: 600; }
+  .hero-links { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; font-weight: 500; color: var(--accent);
+    text-decoration: none; padding: 8px 16px;
+    border: 1px solid var(--accent); border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .hero-link:hover { background: var(--accent); color: #fff; }
+  .hero-link.primary {
+    background: var(--accent); color: #fff;
+  }
+  .hero-link.primary:hover { background: #1e3d52; border-color: #1e3d52; }
+
+  /* SECTION HEADER */
+  .section-label {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: 36px; color: var(--ink);
+    margin-bottom: 48px; letter-spacing: -0.01em;
+  }
+
+  /* ABOUT */
+  #about { background: var(--off-white); border-bottom: 1px solid var(--rule); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .about-text p { color: var(--ink-light); line-height: 1.8; margin-bottom: 16px; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-stats { display: flex; flex-direction: column; gap: 24px; }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 20px 24px;
+  }
+  .stat-number {
+    font-family: var(--serif); font-size: 36px; color: var(--accent);
+    line-height: 1; margin-bottom: 4px;
+  }
+  .stat-label { font-size: 13px; color: var(--ink-light); }
+
+  /* SKILLS */
+  #skills { border-bottom: 1px solid var(--rule); }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .skill-card {
+    border: 1px solid var(--rule); border-radius: 8px; padding: 24px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(46,82,102,0.08); }
+  .skill-card-title {
+    font-size: 13px; font-weight: 600; color: var(--ink);
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+  .skill-icon { font-size: 18px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    background: var(--tag-bg); color: var(--accent);
+    padding: 4px 9px; border-radius: 4px;
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--off-white); border-bottom: 1px solid var(--rule); }
+  .projects-list { display: flex; flex-direction: column; gap: 32px; }
+  .project-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 10px; padding: 32px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .project-card:hover { box-shadow: 0 4px 20px rgba(46,82,102,0.1); border-color: #c5d4dc; }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .project-name { font-family: var(--serif); font-size: 22px; color: var(--ink); }
+  .project-link {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    color: var(--accent); text-decoration: none;
+    border: 1px solid var(--accent); padding: 5px 12px; border-radius: 4px;
+    white-space: nowrap; transition: background 0.2s, color 0.2s;
+  }
+  .project-link:hover { background: var(--accent); color: #fff; }
+  .project-desc { color: var(--ink-light); line-height: 1.75; margin-bottom: 16px; font-size: 14px; }
+  .project-insight {
+    background: var(--accent-light); border-left: 3px solid var(--accent);
+    padding: 10px 16px; border-radius: 0 6px 6px 0;
+    font-size: 13px; color: var(--accent); margin-bottom: 16px; line-height: 1.6;
+  }
+  .project-insight strong { font-weight: 600; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* EXPERIENCE */
+  #experience { border-bottom: 1px solid var(--rule); }
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 32px; padding: 32px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-meta { }
+  .exp-date { font-family: var(--mono); font-size: 11px; color: var(--ink-light); margin-bottom: 6px; }
+  .exp-company { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .exp-location { font-size: 12px; color: var(--ink-light); margin-top: 2px; }
+  .exp-content { }
+  .exp-role { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .exp-bullets { list-style: none; padding: 0; }
+  .exp-bullets li {
+    font-size: 14px; color: var(--ink-light); line-height: 1.7;
+    padding-left: 16px; position: relative; margin-bottom: 6px;
+  }
+  .exp-bullets li::before {
+    content: '—'; position: absolute; left: 0;
+    color: var(--accent); font-weight: 600;
+  }
+
+  /* CERTIFICATIONS */
+  #certifications { background: var(--off-white); border-bottom: 1px solid var(--rule); }
+  .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cert-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 20px 22px;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: var(--accent); }
+  .cert-org { font-family: var(--mono); font-size: 10px; font-weight: 500; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .cert-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; line-height: 1.4; }
+  .cert-date { font-size: 12px; color: var(--ink-light); }
+
+  /* CONTACT */
+  #contact { border-bottom: 1px solid var(--rule); }
+  .contact-intro { color: var(--ink-light); max-width: 500px; line-height: 1.8; margin-bottom: 36px; font-size: 15px; }
+  .contact-links { display: flex; flex-direction: column; gap: 16px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px; border: 1px solid var(--rule); border-radius: 8px;
+    text-decoration: none; color: var(--ink);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    max-width: 420px;
+  }
+  .contact-item:hover { border-color: var(--accent); box-shadow: 0 2px 10px rgba(46,82,102,0.08); }
+  .contact-icon { font-size: 20px; }
+  .contact-label { font-size: 12px; color: var(--ink-light); margin-bottom: 2px; }
+  .contact-value { font-size: 14px; font-weight: 500; color: var(--ink); }
+
+  /* FOOTER */
+  footer {
+    padding: 32px; text-align: center;
+    font-family: var(--mono); font-size: 11px; color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+  }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    .project-header { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">TF_</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Based in Nagpur, Maharashtra</p>
+    <h1 class="hero-name">Taskeen<br>Firdous</h1>
+    <p class="hero-title">
+      <strong>Data Analyst & Software Engineer</strong> — turning raw data into decisions.<br>
+      Skilled in SQL, Power BI, Python, and end-to-end analytics across healthcare and e-commerce domains.
+    </p>
+    <div class="hero-links">
+      <a class="hero-link primary" href="mailto:taskeenf980@gmail.com">↗ Hire Me</a>
+      <a class="hero-link" href="https://github.com/firdouss2004" target="_blank">GitHub</a>
+      <a class="hero-link" href="https://www.linkedin.com/in/taskeenfirdous04" target="_blank">LinkedIn</a>
+      <a class="hero-link" href="#" download>Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container reveal">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Who I am</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a B.Tech Computer Science Engineering graduate (June 2026) from GH Raisoni University, Amravati, with a strong foundation in data analytics, SQL reporting, and business intelligence.</p>
+        <p>I've spent the last year working as a Data Analyst Intern at Sukh Exim and Associates, where I built reporting pipelines, automated workflows, and delivered dashboards that stakeholders actually used to make decisions.</p>
+        <p>I build things that make data useful — not just accurate. Whether it's a 4-tier risk stratification model in MySQL or an e-commerce dashboard in Power BI, I focus on turning numbers into clarity.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">6+</div>
+          <div class="stat-label">Months of data analyst internship experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Power BI dashboards built for stakeholders</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">101K+</div>
+          <div class="stat-label">Patient records analyzed in healthcare project</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container reveal">
+    <p class="section-label">Skills</p>
+    <h2 class="section-title">What I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title"><span class="skill-icon">🗄️</span> SQL & Databases</div>
+        <div class="skill-tags">
+          <span class="tag">MySQL</span><span class="tag">CTEs</span><span class="tag">Window Functions</span>
+          <span class="tag">Joins</span><span class="tag">Subqueries</span><span class="tag">Views</span>
+          <span class="tag">Stored Procedures</span><span class="tag">SQL Server</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title"><span class="skill-icon">📊</span> Reporting & BI</div>
+        <div class="skill-tags">
+          <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Excel (Advanced)</span>
+          <span class="tag">KPI Dashboards</span><span class="tag">MIS Reporting</span>
+          <span class="tag">Data Visualization</span><span class="tag">Report Automation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title"><span class="skill-icon">🐍</span> Programming</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+          <span class="tag">C</span><span class="tag">C++</span><span class="tag">JavaScript (Basic)</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title"><span class="skill-icon">🔍</span> Data Analytics</div>
+        <div class="skill-tags">
+          <span class="tag">EDA</span><span class="tag">ETL Pipelines</span><span class="tag">Data Cleaning</span>
+          <span class="tag">Statistical Analysis</span><span class="tag">Business Intelligence</span>
+          <span class="tag">Stakeholder Reporting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container reveal">
+    <p class="section-label">Projects</p>
+    <h2 class="section-title">Things I've built</h2>
+    <div class="projects-list">
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">Healthcare Analytics:<br>Hospital Readmission Prediction</div>
+          <a class="project-link" href="https://github.com/firdouss2004/healthcare-readmission-prediction" target="_blank">↗ GitHub</a>
+        </div>
+        <p class="project-desc">
+          Analyzed 101,766 patient encounters from the UCI Diabetes 130-US Hospitals dataset to identify key drivers of 30-day hospital readmission. Built a full MySQL pipeline with data cleaning, EDA, and a 4-tier risk stratification model (Low / Medium / High / Very High) using SQL CASE logic across 9 analytical views. Designed a 4-page Power BI dashboard with KPI cards, treemaps, and patient-explorer views tailored to different stakeholder needs.
+        </p>
+        <div class="project-insight">
+          <strong>Key insight:</strong> Patients untested for HbA1c had a higher 30-day readmission rate (11.4%) than poorly controlled diabetics (9.9%) — revealing a critical screening gap in clinical workflows.
+        </div>
+        <div class="project-tags">
+          <span class="tag">MySQL</span><span class="tag">Power BI</span><span class="tag">EDA</span>
+          <span class="tag">Risk Stratification</span><span class="tag">SQL CASE</span><span class="tag">KPI Dashboard</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-name">E-Commerce Sales &<br>Customer Analytics Dashboard</div>
+          <a class="project-link" href="https://github.com/firdouss2004/Ecommerce-Analysis" target="_blank">↗ GitHub</a>
+        </div>
+        <p class="project-desc">
+          Designed a MySQL reporting solution to analyze e-commerce sales, customer behavior, and revenue trends across multiple data sources. Wrote multi-table SQL queries using Joins, CTEs, and Aggregate Functions to consolidate data into unified reporting views. Built an interactive Power BI dashboard tracking sales KPIs and customer segmentation; automated the data pipeline to reduce manual prep time significantly.
+        </p>
+        <div class="project-tags">
+          <span class="tag">MySQL</span><span class="tag">Power BI</span><span class="tag">CTEs</span>
+          <span class="tag">Customer Segmentation</span><span class="tag">Sales KPIs</span><span class="tag">ETL</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container reveal">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">Where I've worked</h2>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-date">Jan 2026 – jul 2026</div>
+          <div class="exp-company">Syncsas Technologies Pvt. Ltd.</div>
+          <div class="exp-location">Remote</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Web Development Intern</div>
+          <ul class="exp-bullets">
+            <li>Developing a full-stack web application covering frontend, backend, and database components.</li>
+            <li>Building responsive UIs and implementing backend logic for core website functionality.</li>
+            <li>Collaborating with the team to design, build, and test features end-to-end.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-date">Jul 2025 – Dec 2025</div>
+          <div class="exp-company">Sukh Exim and Associates Pvt. Ltd.</div>
+          <div class="exp-location">Nagpur, Maharashtra</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Data Analyst Intern</div>
+          <ul class="exp-bullets">
+            <li>Analyzed large business datasets using SQL, Excel, and Power BI to generate actionable insights for management.</li>
+            <li>Automated SQL reporting pipelines, reducing manual reporting effort by 40%.</li>
+            <li>Performed ETL validation across 10+ datasets, improving data accuracy by 30%.</li>
+            <li>Developed 5+ interactive Power BI dashboards and KPI reports used in stakeholder decision-making.</li>
+            <li>Managed high-volume data entry of invoices, orders, and customer records with strong accuracy focus.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container reveal">
+    <p class="section-label">Certifications</p>
+    <h2 class="section-title">Learning never stops</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-org">Deloitte</div>
+        <div class="cert-name">Data Analytics Job Simulation</div>
+        <div class="cert-date">May 2025 – Jul 2025 · Virtual</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-org">Code Alpha</div>
+        <div class="cert-name">Data Analytics Internship</div>
+        <div class="cert-date">Jan 2026 – Feb 2026 · Virtual</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-org">Certification</div>
+        <div class="cert-name">Data Analytics</div>
+        <div class="cert-date">Completed</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-org">Certification</div>
+        <div class="cert-name">C / C++ Programming</div>
+        <div class="cert-date">Completed</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-org">Udemy</div>
+        <div class="cert-name">Product Marketing</div>
+        <div class="cert-date">Completed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container reveal">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Let's talk</h2>
+    <p class="contact-intro">
+      I'm actively looking for Data Analyst and related roles. If you have an opportunity, a project, or just want to connect — reach out directly.
+    </p>
+    <div class="contact-links">
+      <a class="contact-item" href="mailto:taskeenf980@gmail.com">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">taskeenf980@gmail.com</div>
+        </div>
+      </a>
+      <a class="contact-item" href="https://www.linkedin.com/in/taskeenfirdous04" target="_blank">
+        <span class="contact-icon">💼</span>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">linkedin.com/in/taskeenfirdous04</div>
+        </div>
+      </a>
+      <a class="contact-item" href="https://github.com/firdouss2004" target="_blank">
+        <span class="contact-icon">🐙</span>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value">github.com/firdouss2004</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built by Taskeen Firdous · 2026
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
